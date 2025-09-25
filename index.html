@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content=".">
+    <meta name="keywords"
+          content="SpectalFolw">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpectalFolw</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/twentytwenty.css">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./img/logo.png">
+
+
+    <script src="./static/js/jquery-3.2.1.min.js"></script>
+    <script src="./static/js/jquery.event.move.js"></script>
+    <script src="./static/js/jquery.twentytwenty.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/fontawesome.all.min.js"></script>
+</head>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LKCDBW8851"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-LKCDBW8851');
+</script>
+
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
+<!-- 引入 MathJax CDN -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+
+<body>
+
+<section class="hero teaser">
+    <div class="hero-body">
+        <div class="container is-max-desktop has-text-centered">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <img src="img/logo2.png" style="height:170px; margin-bottom: -10px;"></img>
+                    <h1 class="title is-1 publication-title has-text-centered" style="font-size: 2.5rem; line-height: 1.3;">
+                        SpectralFlow: Geometry-Aware Mesh Animation via Spectral Coefficient Diffusion
+                    </h1>
+                    
+                    <!-- 添加作者信息 -->
+                    <div class="authors" style="margin-top: -2px; font-size: 1.8em;">
+                    <span>Anonymous Authors</span>&nbsp;
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- <section class="hero teaser is-light is-small">
+    <div class="hero-body">
+        <div class="container" style="text-align: left; ">
+            <div id="results-carousel-horizontal" class="carousel results-carousel">
+                
+                <video muted autoplay="autoplay" loop="loop" width="100%" preload controls>
+                    <source src="./demo_source/combined/mime_animation_combined.mp4" type="video/mp4">
+                </video>
+
+                <video muted autoplay="autoplay" loop="loop" width="100%" preload controls>
+                    <source src="./demo_source/combined/link_animation_combined.mp4" type="video/mp4">
+                </video>
+
+                <video muted autoplay="autoplay" loop="loop" width="100%" preload controls>
+                    <source src="./demo_source/combined/dragon_animation_combined.mp4" type="video/mp4">
+                </video>
+
+                <video muted autoplay="autoplay" loop="loop" width="100%" preload controls>
+                    <source src="./demo_source/combined/comp1_animation_combined.mp4" type="video/mp4">
+                </video>
+
+                <video muted autoplay="autoplay" loop="loop" width="100%" preload controls>
+                    <source src="./demo_source/combined/flower_animation_combined.mp4" type="video/mp4">
+                </video>
+
+                <video muted autoplay="autoplay" loop="loop" width="100%" preload controls>
+                    <source src="./demo_source/combined/hunter_animation_combined.mp4" type="video/mp4">
+                </video>
+
+                <video muted autoplay="autoplay" loop="loop" width="100%" preload controls>
+                    <source src="./demo_source/combined/trex_animation_combined.mp4" type="video/mp4">
+                </video>
+
+            </div>
+
+            <div class="content has-text-justified" style="margin-top: 15px;">
+                We propose <b>AnimateAnyMesh</b>, the first feed-forward framework for text-driven universal mesh animation, enabling generation of high-quality animations for meshes of arbitrary topology within a few seconds.
+            </div>
+
+        </div>
+    </div>
+</section> -->
+
+
+
+<script>
+    $(window).on('load', function () {
+        bulmaCarousel.attach('#results-carousel-horizontal', {
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            loop: true,
+            autoplay: false,
+        });
+
+        bulmaCarousel.attach('#results-carousel-vertical', {
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            loop: true,
+            autoplay: false,
+        });
+
+    });
+</script>
+<!-- 
+<br><br><br>
+
+
+
+
+
+<br><br><br> -->
+
+<section class="hero teaser">
+    <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-fifths" style=" margin-top: 30px; margin-bottom: 20px;">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        Generating realistic 3D shape sequences (or 4D shapes) conditioned on actions is challenging due to high-dimensional, non-linear, and temporally coherent deformations across diverse shapes. In this work, we introduce SpectralFlow, a diffusion-based framework for action-conditioned 4D shape generation in the Laplacian spectral domain. Instead of modeling raw vertex trajectories or mesh offsets, we represent each shape using a fixed set of Laplacian eigenbases and a sequence of time-varying spectral coefficients, capturing intrinsic geometry and temporal dynamics compactly. By aligning eigenbases across shapes via sign correction and basis transformation, we establish a shared, topology-agnostic spectral space that supports consistent learning across identities and motion types. A conditional diffusion model is trained to generate spectral trajectories based on the input shape and target action, producing smooth, coherent, and semantically aligned mesh sequences. Our method avoids purely implicit modeling, which typically requires large-scale data, by leveraging lightweight geometric representations for controllable 4D shape generation. Extensive experiments show that SpectralFlow outperforms prior methods in reconstruction quality and motion generalization.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="hero teaser">
+    <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-fifths" style=" margin-top: 30px; margin-bottom: 20px;">
+                    <h2 class="title is-3">Framework</h2>
+                    <div class="content has-text-justified">                       
+                        Overview of the proposed SpectralFlow, a novel pipeline for action-conditioned 4D shape generation. Given an input shape $\mathcal{M}_0 = (V_0, F)$ and an action label $a$, we first compute a set of fixed Laplacian eigenbases $\phi$ from the shape topology. 
+    We represent each shape in the sequence as a linear combination of aligned eigenbases, modulated by time-varying spectral coefficients $\{ C_t \}_{t=1}^T$ that are generated by a diffusion model trained to produce realistic coefficient sequences.
+                        <div class="hero-body" style="margin-top: 40px; margin-bottom: -30px;">
+                            <img id="method" width="100%" src="./img/Fig_Pipeline.png"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero teaser is-light is-small">
+    <div class="hero-body">
+
+        <div class="container" style="text-align: center; ">
+            <h2 class="title is-3">Animating Generated 3D Objects</h2>
+
+        <div class="container" style="text-align: middle; ">
+            <!-- <div id="results-carousel-horizontal" class="carousel results-carousel"> -->
+                
+                <video muted autoplay="autoplay" loop="loop" width="80%" preload controls>
+                    <source src="./demo/animations1.mp4" type="video/mp4">
+                </video>
+
+
+            <!-- </div> -->
+
+            <div class="content has-text-justified" style="margin-top: 15px;">
+                Our <b>SpectralFlow</b> framework generates realistic motion sequences for a wide range of 3D shapes, conditioned on action labels (e.g., jump, run, walk, etc.). Notably, animations are produced on ,<b>unseen</b> shapes generated by an image-to-3D model, demonstrating strong generalization across both shape categories and action types.
+            </div>
+
+                
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script>
+    $(window).on('load', function () {
+        bulmaCarousel.attach('#comparison-depthpro', {
+            slidesToScroll: 2,
+            slidesToShow: 2,
+            loop: true,
+            autoplay: false,
+        });
+
+        $(".twentytwenty-container-depthpro").twentytwenty({
+            before_label: 'Depth Pro',
+            after_label: 'Ours',
+            default_offset_pct: 0.5,
+            no_overlay: false,
+            //move_slider_on_hover: true,
+        });
+
+    });
+</script>
+<!-- 
+<section class="hero teaser is-light is-small">
+    <div class="hero-body">
+
+        <div class="container" style="text-align: center; ">
+            <h2 class="title is-3">Examples of Dynamic Mesh Sequences in DyMesh Dataset</h2>
+            <div id="comparison-base" class="carousel results-carousel">
+
+                <div class="twoitem">
+                    <video muted autoplay="autoplay" loop="loop" width="100%">
+                        <source src="./demo/animations2.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+
+                <div class="twoitem">
+                    <video muted autoplay="autoplay" loop="loop" width="100%">
+                        <source src="./demo_source/dymesh_f32_part1.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+
+                <div class="twoitem">
+                    <video muted autoplay="autoplay" loop="loop" width="100%">
+                        <source src="./demo_source/dymesh_f16_part2.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+
+                <div class="twoitem">
+                    <video muted autoplay="autoplay" loop="loop" width="100%">
+                        <source src="./demo_source/dymesh_f32_part2.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+
+                <div class="twoitem">
+                    <video muted autoplay="autoplay" loop="loop" width="100%">
+                        <source src="./demo_source/dymesh_f16_part3.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+
+                <div class="twoitem">
+                    <video muted autoplay="autoplay" loop="loop" width="100%">
+                        <source src="./demo_source/dymesh_f32_part3.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+
+                <div class="twoitem">
+                    <video muted autoplay="autoplay" loop="loop" width="100%">
+                        <source src="./demo_source/dymesh_f16_part4.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+
+                <div class="twoitem">
+                    <video muted autoplay="autoplay" loop="loop" width="100%">
+                        <source src="./demo_source/dymesh_f32_part4.mp4" type="video/mp4">
+                    </video>
+                    
+                </div>
+
+                
+
+            </div>
+
+            <div class="content has-text-justified" style="margin-top: 15px;">
+                We curate over 4M dynamic mesh sequences (16/32 frames) as the proposed <b>DyMesh</b> Dataset. We showcase some examples above (Left: 16 frames. Right: 32 frames).
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section class="hero teaser is-light is-small">
+    <div class="hero-body">
+
+        <div class="container" style="text-align: center; ">
+            <h2 class="title is-3">Animating 3D Objects in Animal3D</h2>
+
+        <div class="container" style="text-align: middle; ">
+            <!-- <div id="results-carousel-horizontal" class="carousel results-carousel"> -->
+                
+                <video muted autoplay="autoplay" loop="loop" width="80%" preload controls>
+                    <source src="./demo/animations2.mp4" type="video/mp4">
+                </video>
+
+
+            <!-- </div> -->
+
+            <div class="content has-text-justified" style="margin-top: 15px;">
+                Animation examples of <b>SpectraFlow</b>. Our method generates realistic and coherent motion sequences for meshes obtained from Animal3D (via mesh extraction from images). 
+            </div>
+
+                
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    $(window).on('load', function () {
+        bulmaCarousel.attach('#cmp-point-carousel-horizontal', {
+            slidesToScroll: 2,
+            slidesToShow: 2,
+            loop: true,
+            autoplay: false,
+        });
+
+    });
+</script>
+
+<script>
+    $(window).on('load', function () {
+        bulmaCarousel.attach('#comparison-base', {
+            slidesToScroll: 2,
+            slidesToShow: 2,
+            loop: true,
+            autoplay: false,
+        });
+
+        $(".twentytwenty-container-bottom").twentytwenty({
+            before_label: 'Base',
+            after_label: 'Ours',
+            default_offset_pct: 0.5,
+            no_overlay: false,
+            // move_slider_on_hover: true,
+        });
+
+    });
+</script>
+
+
+
+
+
+<section class="hero teaser is-light is-small">
+    <div class="hero-body">
+
+        <div class="container" style="text-align: center; ">
+            <h2 class="title is-3">Comparisons on Generated 3D objects</h2>
+
+        <div class="container" style="text-align: middle; ">
+            <!-- <div id="results-carousel-horizontal" class="carousel results-carousel"> -->
+                
+                <video muted autoplay="autoplay" loop="loop" width="80%" preload controls>
+                    <source src="./demo/comparisons.mp4" type="video/mp4">
+                </video>
+
+
+            <!-- </div> -->
+
+            <div class="content has-text-justified" style="margin-top: 15px;">
+              Visualization comparison of SpectralFlow (top row) with AnimateAnyMesh (middle row) and Animate3D (bottom row).
+            </div>
+
+                
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="hero-body">
+        <div class="columns is-two-fifths is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        Website template credit to <a
+                            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, and is licensed under a <a
+                            rel="license"
+                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
