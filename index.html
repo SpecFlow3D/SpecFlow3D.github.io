@@ -268,8 +268,34 @@
       </div>
     </div>
 
-
     <script type="module">
+  const viewer = document.getElementById('horse');
+
+  viewer.addEventListener('load', () => {
+    const model = viewer.model;
+    const materials = model.materials;
+
+    if (!materials || materials.length === 0) {
+      console.warn("❌ 没有材质");
+      return;
+    }
+
+    const material = materials[0];
+    const pbr = material.pbrMetallicRoughness;
+
+    if (pbr) {
+      if (typeof pbr.setTexture === 'function') {
+        pbr.setTexture('baseColorTexture', null); // ✅ 移除贴图
+      }
+
+      pbr.baseColorFactor = [0, 1, 0, 1]; // ✅ 设置绿色
+
+      console.log("✅ 设置颜色为绿色：", pbr.baseColorFactor);
+    }
+  });
+</script>
+
+    <!-- <script type="module">
       const colors = {
         pig: [0.95, 0.8, 0.85, 1], // 低饱和度粉色
         horse: [0.95, 0.8, 0.6, 1],  // 低饱和度橘黄
@@ -296,7 +322,7 @@
           }
         });
       }
-    </script>
+    </script> -->
   <!-- <script type="module">
     const colors = {
       pig: [1, 0, 0, 1],   // 低饱和度粉色
