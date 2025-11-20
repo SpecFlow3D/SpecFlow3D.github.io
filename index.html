@@ -12,19 +12,15 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-  
       function gtag() {
         dataLayer.push(arguments);
       }
-  
       gtag('js', new Date());
-  
       gtag('config', 'G-PYVRSFMDRL');
-    </script>
-        window.addEventListener('beforeunload', () => {
+      window.addEventListener('beforeunload', () => {
           localStorage.clear();
           sessionStorage.clear();
-      });
+        });
     </script>
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
           rel="stylesheet">
@@ -168,7 +164,7 @@
           }
   
           canvas {
-              width: 100%;
+              width: 80%;
               height: auto;
               /* Ensure the aspect ratio is maintained */
           }
@@ -197,7 +193,7 @@
       }
      
       .item {
-            width: 100%;
+            width: 80%;
             height: 100%;
             object-fit: cover;
         }
