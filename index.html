@@ -299,7 +299,7 @@
     </script> -->
 <script type="module">
   const colors = {
-    pig: [0.95, 0.8, 0.2, 1],   // 低饱和度粉色
+    pig: [1, 0, 0, 1],   // 低饱和度粉色
     horse: [0.95, 0.8, 0.85, 1], // 低饱和度橘黄
   };
 
@@ -330,8 +330,8 @@
 
       for (const material of materials) {
         if (material.pbrMetallicRoughness) {
-          // 移除贴图，避免影响颜色
-          material.pbrMetallicRoughness.baseColorTexture = null;
+  
+          material.pbrMetallicRoughness.setTexture('baseColorTexture', null);
           material.pbrMetallicRoughness.baseColorFactor = color;
         }
       }
