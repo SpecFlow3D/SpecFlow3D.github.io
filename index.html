@@ -255,7 +255,24 @@
     </p>
     <div class="level">
       <div class="level-item">
-        <model-viewer id="pig" src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2_clean.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
+        <model-viewer id="pig" src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2_with_material.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
+      </div>
+      <div class="level-item">
+        <model-viewer id="horse" src="./static/animations/deformed_control_smooth_horse_6_refine_horse_6_clean.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
+      </div>
+      <div class="level-item">
+        <model-viewer id="id3" src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
+      </div>
+      <div class="level-item">
+        <model-viewer id="id4" src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
+      </div>
+      <div class="level-item">
+        <model-viewer id="id4" src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
+      </div>
+    </div>
+    <div class="level">
+      <div class="level-item">
+        <model-viewer id="pig" src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2_with_material.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
       </div>
       <div class="level-item">
         <model-viewer id="horse" src="./static/animations/deformed_control_smooth_horse_6_refine_horse_6_clean.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
@@ -267,148 +284,9 @@
         <model-viewer id="id4" src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
       </div>
     </div>
-
-    <script type="module">
-  const viewer = document.getElementById('horse');
-
-  viewer.addEventListener('load', () => {
-    const model = viewer.model;
-    const materials = model.materials;
-
-    if (!materials || materials.length === 0) {
-      console.warn("❌ 没有材质");
-      return;
-    }
-
-    const material = materials[0];
-    const pbr = material.pbrMetallicRoughness;
-
-    if (pbr) {
-      if (typeof pbr.setTexture === 'function') {
-        pbr.setTexture('baseColorTexture', null); // ✅ 移除贴图
-      }
-
-      pbr.baseColorFactor = [0, 1, 0, 1]; // ✅ 设置绿色
-
-      console.log("✅ 设置颜色为绿色：", pbr.baseColorFactor);
-    }
-  });
-</script>
-
-    <!-- <script type="module">
-      const colors = {
-        pig: [0.95, 0.8, 0.85, 1], // 低饱和度粉色
-        horse: [0.95, 0.8, 0.6, 1],  // 低饱和度橘黄
-      };
-
-      for (const [id, color] of Object.entries(colors)) {
-        const viewer = document.getElementById(id);
-
-        if (!viewer) {
-          console.warn(`No model-viewer with id "${id}" found.`);
-          continue;
-        }
-
-        viewer.addEventListener('load', () => {
-          const model = viewer.model;
-          console.log(`Loaded model: ${id}`, model);
-
-          const materials = model?.materials || [];
-          for (const material of materials) {
-            if (material.pbrMetallicRoughness) {
-              material.pbrMetallicRoughness.baseColorTexture = null;
-              material.pbrMetallicRoughness.setBaseColorFactor(color);
-            }
-          }
-        });
-      }
-    </script> -->
-  <!-- <script type="module">
-    const colors = {
-      pig: [1, 0, 0, 1],   // 低饱和度粉色
-      horse: [0.95, 0.8, 0.85, 1], // 低饱和度橘黄
-    };
-
-    Object.entries(colors).forEach(([id, color]) => {
-      const viewer = document.getElementById(id);
-
-      if (!viewer) {
-        console.warn(`⚠️ model-viewer with id "${id}" not found.`);
-        return;
-      }
-
-      viewer.addEventListener('load', () => {
-        const model = viewer.model;
-
-        if (!model) {
-          console.warn(`⚠️ model-viewer "${id}" has no loaded model.`);
-          return;
-        }
-
-        const materials = model.materials || [];
-
-        if (materials.length === 0) {
-          console.warn(`⚠️ model "${id}" has no materials.`);
-          return;
-        }
-
-        console.log(`✅ Setting color for "${id}"`, color);
-
-        for (const material of materials) {
-          if (material.pbrMetallicRoughness) {
     
-            material.pbrMetallicRoughness.setTexture('baseColorTexture', null);
-            material.pbrMetallicRoughness.baseColorFactor = color;
-          }
-        }
-      });
-    });
-</script> -->
-<!-- <script type="module">
-  window.addEventListener('DOMContentLoaded', () => {
-    const viewers = document.querySelectorAll('model-viewer');
 
-    viewers.forEach((viewer, index) => {
-      viewer.addEventListener('load', () => {
-        const model = viewer.model;
-        if (!model) {
-          console.warn(`Model ${index} failed to load.`);
-          return;
-        }
 
-        const materialColor = getRandomColor();
-        const materials = model.materials || [];
-
-        if (materials.length === 0) {
-          console.warn(`Model ${index} has no materials.`);
-        }
-
-        for (const material of materials) {
-          // ✅ 如有贴图，移除贴图，否则不会显示纯色
-          const pbr = material.pbrMetallicRoughness;
-          if (pbr) {
-            pbr.baseColorTexture = null; // 移除贴图
-            pbr.setBaseColorFactor(materialColor);
-            console.log(`Model ${index} color set to:`, materialColor);
-          } else {
-            console.warn(`Material in model ${index} has no PBR data.`);
-          }
-        }
-      });
-
-      viewer.addEventListener('error', (e) => {
-        console.error(`Model ${index} failed to load:`, e);
-      });
-    });
-
-    function getRandomColor() {
-      const r = Math.random();
-      const g = Math.random();
-      const b = Math.random();
-      return [r, g, b, 1];
-    }
-  });
-</script> -->
 </div>
 
   </section>
