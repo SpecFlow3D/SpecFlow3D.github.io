@@ -197,7 +197,24 @@
             height: 100%;
             object-fit: cover;
         }
-   
+      .level-item {
+          text-align: center;
+        }
+
+        .card-wrapper {
+          width: 200px;
+          height: 320px; /* 270px 模型 + 50px 留给文字 */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .card-wrapper p {
+          margin-top: 0.2rem;
+          font-size: 1.45rem;
+          color: #666;
+        }
+        
   </style>
 </head>
 
@@ -253,81 +270,79 @@
     <p class="content has-text-centered is-size-4"> 
         <a>Generated 3D obj from single image-to-3D method</a>
     </p>
-    <div class="level-item" style="text-align: center;">
-        <div style="width: 200px;">
+    <div class="level">
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="pig" src= "./static/animations/goat0_bp.glb"  style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> walk </p>
-      </div>
-    </div>
-
+      <p > walk </p>
+      </div></div>
       
-      <div class="level-item" style="text-align: center;">
-        <div style="width: 200px;">
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="id3" src="./static/animations/bear2_gp.glb" style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> walk </p>
-      </div>
-      </div>
-      <div class="level-item" style="text-align: center;">
-        <div style="width: 200px;">
+      <p > walk </p>
+      </div></div>
+      
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="id4" src="./static/animations/lamb28_pp.glb"   style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> walk </p>
-      </div>
-      </div>
-      <div class="level-item" style="text-align: center;">
-        <div style="width: 200px;">
+      <p > walk </p>
+      </div></div>
+       <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="id4" src="./static/animations/sheep11_gp.glb"  style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> walk </p>
-      </div>
- </div>
+      <p > walk </p>
+      </div></div>
+ 
     </div>
 
     <div class="level">
      
      
-       <div class="level-item" style="text-align: center;">
-        <div style="width: 200px;">
+       <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="id4" src="./static/animations/tapir_attack_run_op.glb"  style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> attack run </p>
-      </div>
-      </div>
-      <div class="level-item" style="text-align: center;">
-        <div style="width: 200px;">
+      <p > attack run </p>
+      </div></div>
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="id4" src="./static/animations/pig_tail1_bp.glb"   style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> attack run </p>
-      </div>
-      </div>
-     <div class="level-item" style="text-align: center;">
-        <div style="width: 200px;">
+      <p > attack run </p>
+      </div></div>
+       <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="id4" src="./static/animations/tapir1_cg.glb"  style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> drink </p>
-      </div>
-      </div>
-     <div class="level-item" style="text-align: center;">
-        <div style="width: 200px;">
+      <p > drink </p>
+      </div></div>
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="horse" src="./static/animations/camel6_pp.glb"     style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> drink </p>
-      </div>
-      </div>
+      <p > drink </p>
+      </div></div>
     </div>
 
      <div class="level">
       
-      <div class="level-item" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="horse" src="./static/animations/mouse2_op.glb"   style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> climb </p>
-      </div>
-      <div class="level-item" style="display: flex; flex-direction: column; align-items: center;">
+      <p > climb </p>
+      </div></div>
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="id3" src="./static/animations/camel7_cg.glb"   style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> walk left </p>
-      </div>
-      <div class="level-item" style="display: flex; flex-direction: column; align-items: center;">
+      <p > walk left </p>
+      </div></div>
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="id4" src="./static/animations/moose_oy.glb"  style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> run forward </p>
-      </div>
-      <div class="level-item" style="display: flex; flex-direction: column; align-items: center;">
+      <p > run forward </p>
+      </div></div>
+      <div class="level-item">
+    <div class="card-wrapper">
         <model-viewer id="pig" src="./static/animations/dog4_oy.glb"  style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
-      <p style="margin-top: 0.2rem; font-size: 1.45rem; color: #666;"> run forward </p>
-      </div>
+      <p > run forward </p>
+      </div></div>
 
     </div>
 
