@@ -6,7 +6,7 @@
           content="SpectalFlow">
     <meta name="keywords" content="4D content, Diffusion">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SpectralFlow: Geometry-Aware Mesh Animation via Spectral Coefficient Diffusion </title>
+    <title>SpectralFlow: Geometry-Aware Mesh Animation </br> via Spectral Coefficient Diffusion </title>
   
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -126,7 +126,7 @@
       }
   
       canvas {
-          width: 80%;
+          width: 100%;
           height: auto;
           background-color: #fff;
       }
@@ -164,7 +164,7 @@
           }
   
           canvas {
-              width: 80%;
+              width: 100%;
               height: auto;
               /* Ensure the aspect ratio is maintained */
           }
@@ -193,7 +193,7 @@
       }
      
       .item {
-            width: 80%;
+            width: 100%;
             height: 100%;
             object-fit: cover;
         }
@@ -243,7 +243,7 @@
     Overview of the proposed SpectralFlow, a novel pipeline for action-conditioned 4D shape generation. Given an input shape $\mathcal{M}_0 = (V_0, F)$ and an action label $a$, we operate in a shared spectral space where spectral basis across shapes are aligned.  
     Motion is modeled as the offset of time-varying spectral coefficients conditioned on the input action. A conditional diffusion model learns to generate coherent spectral trajectories in this aligned space, enabling realistic and topology-agnostic shape animation.
     </p>
-    <img src="./img/Fig_Pipeline.png" width="80%">
+    <img src="./img/Fig_Pipeline.png" width="100%">
 
    
     
@@ -255,31 +255,42 @@
     </p>
     <div class="level">
       <div class="level-item">
-        <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 80%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto"></model-viewer>
+        <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto"></model-viewer>
       </div>
       <div class="level-item">
-        <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 80%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto"></model-viewer>
+        <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto"></model-viewer>
       </div>
       <div class="level-item">
-        <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 80%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto"></model-viewer>
+        <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto"></model-viewer>
       </div>
       <div class="level-item">
-        <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 80%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto" ></model-viewer>
+        <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto" ></model-viewer>
       </div>
     </div>
 
-    <!-- <div class="level">
-    <div class="level-item">
-      <model-viewer src="./static/animations/rabbit2.glb" poster="./static/animations/rabbit.png" style="width: 90%; height: 600px;" autoplay shadow-intensity="1" camera-controls touch-action="none"></model-viewer>
-    </div>
-    <div class="level-item">
-      <model-viewer src="./static/animations/rabbit2.glb" poster="./static/animations/rabbit.png" style="width: 90%; height: 600px;" autoplay shadow-intensity="1" camera-controls touch-action="none"></model-viewer>
-    </div>
-    <div class="level-item">
-      <model-viewer src="./static/animations/rabbit2.glb" poster="./static/animations/rabbit.png" style="width: 90%; height: 600px;" autoplay shadow-intensity="1" camera-controls touch-action="none"></model-viewer>
-    </div>
-  </div> -->
+    <script type="module">
+      const viewer = document.getElementById('viewer');
 
+      viewer.addEventListener('load', () => {
+        const materialColor = getRandomColor();
+
+        
+        const materials = viewer.model?.materials || [];
+        for (const material of materials) {
+          if (material.pbrMetallicRoughness) {
+            material.pbrMetallicRoughness.setBaseColorFactor(materialColor);
+          }
+        }
+      });
+
+     
+      function getRandomColor() {
+        const r = Math.random();
+        const g = Math.random();
+        const b = Math.random();
+        return [r, g, b, 1]; // 最后一个 1 是 alpha 透明度
+      }
+    </script>
 
 </div>
 
