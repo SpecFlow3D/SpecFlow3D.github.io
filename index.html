@@ -65,7 +65,7 @@
       }
   
       .title.is-3.publication-title {
-          font-size: 38px;
+          font-size: 42px;
           margin-bottom: 42px;
           font-weight: bold;
           background-image: linear-gradient(to right,  #b5009a, rgb(192, 150, 23), rgb(132, 97, 206));
@@ -267,35 +267,51 @@
         <model-viewer src="./static/animations/deformed_control_smooth_pig_2_refine_pig_2.glb"  style="width: 100%; height: 650px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="90deg 90deg auto" ></model-viewer>
       </div>
     </div>
-    <script type="module">
- 
-      window.addEventListener('DOMContentLoaded', () => {
-        
-        const viewers = document.querySelectorAll('model-viewer');
+<script type="module">
+  window.addEventListener('DOMContentLoaded', () => {
+    const viewers = document.querySelectorAll('model-viewer');
 
-  
-        viewers.forEach((viewer) => {
-          viewer.addEventListener('load', () => {
-            const materialColor = getRandomColor();
+    viewers.forEach((viewer, index) => {
+      viewer.addEventListener('load', () => {
+        const model = viewer.model;
+        if (!model) {
+          console.warn(`Model ${index} failed to load.`);
+          return;
+        }
 
-            const materials = viewer.model?.materials || [];
-            for (const material of materials) {
-              if (material.pbrMetallicRoughness) {
-                material.pbrMetallicRoughness.setBaseColorFactor(materialColor);
-              }
-            }
-          });
-        });
+        const materialColor = getRandomColor();
+        const materials = model.materials || [];
 
-     
-        function getRandomColor() {
-          const r = Math.random();
-          const g = Math.random();
-          const b = Math.random();
-          return [r, g, b, 1]; 
+        if (materials.length === 0) {
+          console.warn(`Model ${index} has no materials.`);
+        }
+
+        for (const material of materials) {
+          // ✅ 如有贴图，移除贴图，否则不会显示纯色
+          const pbr = material.pbrMetallicRoughness;
+          if (pbr) {
+            pbr.baseColorTexture = null; // 移除贴图
+            pbr.setBaseColorFactor(materialColor);
+            console.log(`Model ${index} color set to:`, materialColor);
+          } else {
+            console.warn(`Material in model ${index} has no PBR data.`);
+          }
         }
       });
-    </script>
+
+      viewer.addEventListener('error', (e) => {
+        console.error(`Model ${index} failed to load:`, e);
+      });
+    });
+
+    function getRandomColor() {
+      const r = Math.random();
+      const g = Math.random();
+      const b = Math.random();
+      return [r, g, b, 1];
+    }
+  });
+</script>
 </div>
 
   </section>
