@@ -269,7 +269,7 @@
     </div>
 
 
-    <script type="module">
+    <!-- <script type="module">
       const colors = {
         pig: [0.95, 0.8, 0.85, 1], // 低饱和度粉色
         horse: [0.95, 0.8, 0.6, 1],  // 低饱和度橘黄
@@ -296,7 +296,48 @@
           }
         });
       }
-    </script>
+    </script> -->
+    <script type="module">
+    const colors = {
+      pig: [0.95, 0.8, 0.85, 1],   // 低饱和度粉色
+      horse: [0.95, 0.8, 0.6, 1], // 低饱和度橘黄
+    };
+
+    Object.entries(colors).forEach(([id, color]) => {
+      const viewer = document.getElementById(id);
+
+      if (!viewer) {
+        console.warn(`⚠️ model-viewer with id "${id}" not found.`);
+        return;
+      }
+
+      viewer.addEventListener('load', () => {
+        const model = viewer.model;
+
+        if (!model) {
+          console.warn(`⚠️ model-viewer "${id}" has no loaded model.`);
+          return;
+        }
+
+        const materials = model.materials || [];
+
+        if (materials.length === 0) {
+          console.warn(`⚠️ model "${id}" has no materials.`);
+          return;
+        }
+
+        console.log(`✅ Setting color for "${id}"`, color);
+
+        for (const material of materials) {
+      
+          if (material.pbrMetallicRoughness) {
+            material.pbrMetallicRoughness.baseColorTexture = null;
+            material.pbrMetallicRoughness.setBaseColorFactor(color);
+          }
+        }
+      });
+    });
+  </script>
 <!-- <script type="module">
   window.addEventListener('DOMContentLoaded', () => {
     const viewers = document.querySelectorAll('model-viewer');
