@@ -97,6 +97,7 @@
       .title.is-3.submit{
         /* font-size: 20px; */
         margin-bottom: 60px;
+        margin-top: 60px;
       }
   
   
@@ -249,7 +250,7 @@
   <div class="container is-max-desktop has-text-centered">
  
      <!-- abstract -->
-     <p class="title is-3 mt-5 has-text-centered"> Abstract </p>
+     <p class="title is-3 mt-6 has-text-centered"> Abstract </p>
      <p class="content is-size-5 has-text-justified">
        Generating realistic 3D shape sequences (or 4D shapes) conditioned on actions is challenging due to high-dimensional, non-linear, and temporally coherent deformations across diverse shapes. In this work, we introduce SpectralFlow, a diffusion-based framework for action-conditioned 4D shape generation in the Laplacian spectral domain. Instead of modeling raw vertex trajectories or mesh offsets, we represent each shape using a fixed set of Laplacian eigenbases and a sequence of time-varying spectral coefficients, capturing intrinsic geometry and temporal dynamics compactly. By aligning eigenbases across shapes via sign correction and basis transformation, we establish a shared, topology-agnostic spectral space that supports consistent learning across identities and motion types. A conditional diffusion model is trained to generate spectral trajectories based on the input shape and target action, producing smooth, coherent, and semantically aligned mesh sequences. Our method avoids purely implicit modeling, which typically requires large-scale data, by leveraging lightweight geometric representations for controllable 4D shape generation. Extensive experiments show that SpectralFlow outperforms prior methods in reconstruction quality and motion generalization.
      </p>
@@ -257,22 +258,46 @@
     <p class="title is-3 mt-5 has-text-centered"> Methodology </p>
     
     <p class="content is-size-5 has-text-justified">
-    Overview of the proposed SpectralFlow, a novel pipeline for action-conditioned 4D shape generation. Given an input shape $\mathcal{M}_0 = (V_0, F)$ and an action label $a$, we operate in a shared spectral space where spectral basis across shapes are aligned.  
+    Overview of the proposed SpectralFlow, a novel pipeline for action-conditioned 4D shape generation. Given an input shape and an action label, we operate in a shared spectral space where spectral basis across shapes are aligned.  
     Motion is modeled as the offset of time-varying spectral coefficients conditioned on the input action. A conditional diffusion model learns to generate coherent spectral trajectories in this aligned space, enabling realistic and topology-agnostic shape animation.
     </p>
     <img src="./img/Fig_Pipeline.png" width="100%">
 
    
-    
+<!--     
     <p class="title is-3 mt-5 has-text-centered"> Animation Results on Unseen motion  </p>
     <p class="content has-text-centered is-size-4"> 
-        <a> Animante the seen mesh with unseen motion. </a>
+        <a> Animante the seen mesh with unseen motion. </a> -->
+    <!-- <p class="title is-3 mt-5 has-text-centered"> Comparisons  </p>
+    <p class="content has-text-centered is-size-4"> 
+        <a>Visual Comparisons on Animante3D and AnimateAnymesh </a> -->
+    <!-- <div class="level">
+        <div class="level-item">
+          <div class="card-wrapper">
+            <model-viewer id="pig" src= "./static/animations/mouse2_op.glb"  style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
+            <p > climb </p>
+          </div>
+        </div>
+      <div class="level-item">
+        <div class="card-wrapper">
+          <model-viewer id="id3" src="./static/animations/bear2_gp.glb" style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto"></model-viewer>
+          <p > climb </p>
+        </div>
+      </div>
+      <div class="level-item">
+        <div class="card-wrapper">
+          <model-viewer id="id4" src="./static/animations/lamb28_pp.glb"   style="width: 100%; height: 270px;" autoplay shadow-intensity="1" camera-controls touch-action="none" camera-orbit="-90deg 90deg auto" ></model-viewer>
+          <p > climb </p>
+        </div>
+      </div>
+    </div> --> 
+
 
 
     <!-- Animantion viewer -->
-    <p class="title is-3 mt-5 has-text-centered"> Animation Results on Unseen shape </p>
+    <p class="title is-3 mt-6 has-text-centered"> Animation Results</p>
     <p class="content has-text-centered is-size-4"> 
-        <a>Generated 3D obj from single image-to-3D method</a>
+        <b>Generated 3D obj from <a href="https://penghtyx.github.io/Era3D/" target_="_blank">single image-to-3D method </a></b>
     </p>
 
       <div class="level">
@@ -356,9 +381,10 @@
       </div>
     </div>
 
-  <p class="title is-3 mt-5 has-text-centered"> Animation Results on Unseen shape </p>
-    <p class="content has-text-centered is-size-4"> 
-        <a> Meshes extraction from images. </a>
+  <!-- <p class="title is-3 mt-5 has-text-centered"> Animation Results on Unseen shape </p> -->
+    <p class="content mt-6 has-text-centered is-size-4"> 
+        <a href="https://xujiacong.github.io/Animal3D/" target="_blank"> <b>Meshes extraction from images</b> </a>
+        
   </p>
     <div class="level">
       <div class="level-item" >
@@ -454,8 +480,16 @@
     </div>
 
     
+    <p class="title is-3 mt-6 has-text-centered"> Visual Comparisons </p>
     
-
+    <p class="content is-size-5 has-text-justified">
+        Visualization comparison of SpectralFlow (middle column) with <a href="https://github.com/JarrentWu1031/AnimateAnyMesh/tree/main" target="_blank"><b>AnimateAnyMesh</b></a> (left column) and <a href="https://github.com/yanqinJiang/Animate3D" target="_blank"><b>Animate3D</b></a> (right column).
+      </p>
+      <div class="item">
+              <video muted autoplay="autoplay" loop="loop" width="80%" preload controls>
+                <source src="./demo/comparisons.mp4" type="video/mp4">
+              </video>
+      </div>
 
 </div>
 
